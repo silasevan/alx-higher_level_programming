@@ -1,11 +1,13 @@
 #!/usr/bin/node
 
-const args = process.argv.slice(2).map(Number);
+const args = process.argv.slice(2);
 
 if (args.length <= 1) {
   console.log(0);
 } else {
-  const uniqueArgs = [...new Set(args)];
-  uniqueArgs.sort((a, b) => b - a);
-  console.log(uniqueArgs[1]);
+  const numbers = args.map(Number);
+  const max = Math.max(...numbers);
+  const filteredNumbers = numbers.filter((num) => num !== max);
+  const secondMax = Math.max(...filteredNumbers);
+  console.log(secondMax);
 }
